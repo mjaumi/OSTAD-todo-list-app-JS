@@ -88,6 +88,15 @@ li:hover {
     background: #f9f9f9;
 }
 
+.task-id {
+    font-weight: 500;
+    color: #86dc35;
+}
+
+.task-text {
+    font-weight: 600;
+}
+
 .edit,
 .delete {
     cursor: pointer;
