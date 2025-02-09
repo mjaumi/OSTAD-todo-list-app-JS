@@ -46,15 +46,35 @@ function addNewTask() {
     taskInput.value = ''
 }
 
+// function to edit task declared here
+function editTask(element) {
+    const updatedTaskText = prompt('Enter Updated Task')
+
+    if (!updatedTaskText) {
+        return
+    }
+
+    const taskElement = element.parentElement.parentElement
+
+    taskElement.firstElementChild.getElementsByTagName('span')[1].innerText = updatedTaskText
+
+    const taskId = taskElement.firstElementChild.firstElementChild.innerText.split('.')[0]
+
+    // saving updated tasks into local storage here
+    let taskList = JSON.parse(localStorage.getItem('task-list')) || []
+    taskList = taskList.map(task => task.id === Number(taskId) ? { ...task, text: updatedTaskText } : task)
+    localStorage.setItem('task-list', JSON.stringify(taskList))
+}
+
 // function to delete task from list declared here
 function deleteTask(element) {
-    const taskTextElement = element.parentElement.parentElement
+    const taskElement = element.parentElement.parentElement
 
-    const taskId = taskTextElement.firstElementChild.firstElementChild.innerText.split('.')[0]
+    const taskId = taskElement.firstElementChild.firstElementChild.innerText.split('.')[0]
 
-    taskTextElement.remove()
+    taskElement.remove()
 
-    // saving updated task into local storage here
+    // saving updated tasks into local storage here
     let taskList = JSON.parse(localStorage.getItem('task-list')) || []
     taskList = taskList.filter(task => task.id !== Number(taskId))
     localStorage.setItem('task-list', JSON.stringify(taskList))
