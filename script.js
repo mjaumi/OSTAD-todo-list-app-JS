@@ -16,7 +16,7 @@ function addTaskToDOM(task) {
             <span class="task-id">${task.id}.</span>
             <span class="task-text">${task.text}</span>
         </span>
-        <span>
+        <span class="task-bnt-container">
             <span class="edit" onclick="editTask(this)">Edit</span>
             <span class="delete" onclick="deleteTask(this)">Delete</span>
         </span>

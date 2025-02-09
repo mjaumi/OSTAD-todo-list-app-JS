@@ -21,7 +21,7 @@ body {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: min(95%, 600px);
     text-align: center;
 }
 
@@ -88,6 +88,13 @@ li:hover {
     background: #f9f9f9;
 }
 
+li>span {
+    display: flex;
+    align-items: start;
+    text-align: left;
+    gap: 2px;
+}
+
 .task-id {
     font-weight: 500;
     color: #86dc35;
@@ -112,8 +119,15 @@ li:hover {
     color: #dc3545;
 }
 
-.completed {
-    text-decoration: line-through;
-    color: gray;
-    opacity: 0.7;
+
+@media (max-width: 768px) {
+    li {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .task-bnt-container {
+        align-self: center;
+        margin-top: 10px;
+    }
 }
